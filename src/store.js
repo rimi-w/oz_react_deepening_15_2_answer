@@ -11,6 +11,9 @@ export const useBoardStore = create(
         set((state) => ({
           data: state.data.map((item) => (item.id === updatedBoard.id ? updatedBoard : item)),
         })),
+
+      updateBoardType: (id, type) => set((state) => ({ data: state.data.map(el => el.id === id ? { ...el, type: type } : el) })),
+      reorderItems: (newData) => set({ data: newData })
     }),
     {
       name: 'board-storage',
